@@ -1,8 +1,7 @@
 import datetime
 import calendar
 import boto3
-from botocore.config import Config
-
+from botocore.client import Config
 config = Config(retries={
                         'max_attempts': 10,
                         'mode': 'standard'})
@@ -21,6 +20,6 @@ if __name__ == '__main__':
             'Start': month_start,
             'End': month_end
         },
-        Filter={
-        })
+        Granularity='MONTHLY',
+        Filter={})
     print(response)
